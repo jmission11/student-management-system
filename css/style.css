@@ -1,0 +1,62 @@
+body{
+    font-family: Arial, sans-serif;
+}
+#title{
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+#title:hover{
+    color: rgb(0, 0, 105);
+    text-decoration: underline;
+
+}
+
+table { 
+    border:1px solid black;
+    margin: 20px;
+    width: 90%;
+    border-collapse: collapse;
+}
+table, th, td { 
+    text-align: left;
+    padding: 8px;
+
+}
+th{
+    font-style: italic;
+    border-bottom: 1px solid black;
+}
+tr:nth-child(even) {
+    background-color:rgb(219, 219, 250);
+}
+
+form {
+    max-width: 300px !important; /* Restrict the maximum width to 300px */
+    width: 100%; /* This ensures responsiveness */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left; /* Center content inside the form */
+    text-align: left;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Center form horizontally on the page */
+}
+
+input{
+    width: 100%;
+}
+select{
+    width: 100%;
+}
+
+h2{
+    text-align: center
+}   
