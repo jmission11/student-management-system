@@ -4,11 +4,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if(isset($_SESSION['UserLogin'])){
-    echo"Welcome ".$_SESSION['UserLogin'];
-}else{
-    echo"Welcome Guest";
-}
+// if(isset($_SESSION['UserLogin'])){
+//     echo"Welcome ".$_SESSION['UserLogin'];
+// }else{
+//     echo"Welcome Guest";
+// }
 
 
 include_once("connections/connections.php");
