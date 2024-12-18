@@ -45,7 +45,7 @@ $row = $students->fetch_assoc();
     <table>
         <thead>
             <tr>
-                <th></th>
+                <th>ID no.</th>
                 <th>First Name</th>
                 <th>Last Name</th>
             </tr>
@@ -53,7 +53,7 @@ $row = $students->fetch_assoc();
         <tbody>
             <?php do { ?>
             <tr>
-                <td><a href="details.php?ID=<?php echo $row['id']; ?>">view</a></td>
+                <td><a href="details.php?ID=<?php echo $row['id']; ?>"><?php echo $row['id']; ?></a></td>
                 <td><?php echo $row['firstname']; ?></td>
                 <td><?php echo $row['lastname']; ?></td>
             </tr>

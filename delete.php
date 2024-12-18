@@ -8,7 +8,7 @@ if (isset($_POST['delete'])){
     $sql = "DELETE FROM student_list WHERE id = '{$id}'";
     $con->query($sql) or die($con->error);
     
-    header("Location: indexADMIN.php");
+    header("Location: index.php");
     exit;
 
 }

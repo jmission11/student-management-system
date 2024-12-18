@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
-<a href="indexADMIN.php"><-Back</a>
+<a href="index.php"><-Back</a>
     <form action="" method="post">
         <h2>Add Names</h2>
         <label>First Name</label>
@@ -47,6 +47,7 @@ if(isset($_POST['submit'])){
         </select>
         <br>
         <input type="submit" name = "submit" value="Submit">
+        <a href="register.php">Register</a>
     </form>
 </body>
 </html>

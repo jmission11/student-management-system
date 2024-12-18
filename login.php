@@ -19,11 +19,7 @@ if(isset($_POST['login']))
         $_SESSION['UserLogin'] = $row['username'];
         $_SESSION['Access'] = $row['access'];
         echo header("Location: index.php");
-        // if (isset($_SESSION['Access']) && $_SESSION['Access'] === "ADMIN"){
-        //     echo header("Location: index.php");
-        // }else{
-        //     echo header("Location: index.php");
-        // }
+    
     }else{
         echo "Invalid Username or Password!";
     }
