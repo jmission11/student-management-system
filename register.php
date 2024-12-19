@@ -14,19 +14,22 @@ if(isset($_POST['submit'])){
     if(!empty($user) && !empty($pass) && !empty($access)){
         $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
         $result = $con->query($sql);
-
-        if($result->num_rows > 0){
-            echo "Username already exists. Please choose another username.";
-        } else {
-            if(isset($_SESSION['current_token']) && $_SESSION['current_token'] == $token){
-                $sql = "INSERT INTO `users`(`username`, `password`, `access`) VALUES ('$user', '$pass', '$access')";
-                $con->query($sql) or die($con->error);
-                header("Location: Login.php");
-                exit;
-            }else{
-                echo "Access Token Authentication Invalid!";
+        if(isset($_POST['conpassword']) == $pass){
+            if($result->num_rows > 0){
+                echo "Username already exists. Please choose another username.";
+            } else {
+                if(isset($_SESSION['current_token']) && $_SESSION['current_token'] == $token){
+                    $sql = "INSERT INTO `users`(`username`, `password`, `access`) VALUES ('$user', '$pass', '$access')";
+                    $con->query($sql) or die($con->error);
+                    header("Location: Login.php");
+                    exit;
+                }else{
+                    echo "Access Token Authentication Invalid!";
+                }
+                
             }
-            
+        }else{
+            echo "Password Doesn't match!";
         }
     } else {
         echo "Please fill in all fields.";
@@ -45,13 +48,16 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <a href='index.php'><-Back</a>
-    <form action="" method="post">
+    <form action="" method="post" id="register">
         <h2>Register</h2>
         <label>User Name</label>
         <input type="text" name="user" id = "user" >
         <br>
         <label>Password</label>
         <input type="password" name="password" id = "password" >
+        <br>
+        <label>Confirm Password</label>
+        <input type="password" name="conpassword" id = "conpassword" >
         <br>
         <label>Access Type</label>
         <select name="access" id="access">

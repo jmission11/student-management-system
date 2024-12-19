@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 <a href="index.php"><-Back</a>
-    <form action="" method="post">
+    <form action="" method="post" id="add">
         <h2>Add Names</h2>
         <label>First Name</label>
         <input type="text" name="firstname" id = "firstname" >
@@ -45,6 +45,9 @@ if(isset($_POST['submit'])){
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
+        <br>
+        <label>Date of Birth</label>
+        <input type="date" name="DOB" id="DOB">
         <br>
         <input type="submit" name = "submit" value="Submit">
         <a href="register.php">Register</a>

@@ -32,6 +32,11 @@ $row = $students->fetch_assoc();
 <body>
     <a href="index.php" id = "title">Student Management</a>
     <br>
+    <br>
+    <form action="result.php" method="get" id="index">
+        <input type="text" name="search" id="search">
+        <button type="submit" name="">Search</button>
+    </form>
     <div id ="clickables">
     <?php if(isset($_SESSION['UserLogin'])){ ?>
     <a href="logout.php" id = "logout">Logout</a>

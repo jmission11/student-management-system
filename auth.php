@@ -69,7 +69,7 @@ if (isset($_SESSION['token_issue_time'])) {
 </head>
 <body>
     <a href='register.php'><-Back</a>
-    <form method="post">
+    <form method="post" id="auth">
         <h2>Admin Token Generator</h2>
         <label for="token">Generated Token (Expires in 30 Minutes):</label>
         <textarea id="token" name="token" rows="1" cols="40" readonly><?php echo $current_token; ?></textarea>

@@ -35,7 +35,7 @@ $row = $students->fetch_assoc();
 <body>
     <a href="index.php"><- Back</a>
     <?php if(isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){?>
-    <form action="delete.php" method="post">
+    <form action="delete.php" method="post" id="detailsPage">
         <a href="edit.php?ID=<?php echo $row['id'];?>">Edit</a>
         <button type="submit" name="delete">Delete</button>
         <input type="hidden" name="ID" value="<?php echo $row['id'];?>">

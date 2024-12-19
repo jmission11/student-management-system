@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <a href="details.php"><-Back</a>
-    <form action="" method="post">
+    <form action="" method="post" id="edit">
         <h2>Edit Names</h2>
         <label>First Name</label>
         <input type="text" name="firstname" id = "firstname" value = "<?php echo $row['firstname'];?>" >

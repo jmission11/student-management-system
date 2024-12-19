@@ -36,7 +36,7 @@ if(isset($_POST['login']))
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
-    <form action="" method = "post">
+    <form action="" method = "post" id="login">
     <h1>Login</h1>
     <br>
     <label>Username</label>
