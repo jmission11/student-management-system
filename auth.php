@@ -30,8 +30,8 @@ if (isset($_POST['generate']) || !isset($_SESSION['current_token'])) {
 $current_token = isset($_SESSION['current_token']) ? $_SESSION['current_token'] : "No tokens available";
 
 if (isset($_SESSION['token_issue_time'])) {
-    $time_left = ($token_duration - (time() - $_SESSION['token_issue_time'])) > 0 
-        ? $token_duration - (time() - $_SESSION['token_issue_time']) 
+    $time_left = ($token_duration - (time() - $_SESSION['token_issue_time'])) > 0
+        ? $token_duration - (time() - $_SESSION['token_issue_time'])
         : 0;
 } else {
     $time_left = 0;
@@ -40,11 +40,12 @@ if (isset($_SESSION['token_issue_time'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token Generator</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
     <script>
         let timeLeft = <?php echo $time_left; ?>; // Remaining seconds from PHP
 
@@ -63,18 +64,21 @@ if (isset($_SESSION['token_issue_time'])) {
                 }
             }, 1000);
         }
-        
+
         window.onload = startTimer;
     </script>
 </head>
+
 <body>
-    <a href='register.php'><-Back</a>
-    <form method="post" id="auth">
-        <h2>Admin Token Generator</h2>
-        <label for="token">Generated Token (Expires in 30 Minutes):</label>
-        <textarea id="token" name="token" rows="1" cols="40" readonly><?php echo $current_token; ?></textarea>
-        <p id="timer"><?php echo $time_left > 0 ? gmdate("i:s", $time_left) . " remaining" : "Token Expired"; ?></p>
-        <button type="submit" name="generate">Generate New Token</button>
-    </form>
+    <a href='register.php'><-Back< /a>
+            <form method="post" id="auth">
+                <h2>Admin Token Generator</h2>
+                <label for="token">Generated Token (Expires in 30 Minutes):</label>
+                <textarea id="token" name="token" rows="1" cols="40" readonly><?php echo $current_token; ?></textarea>
+                <p id="timer"><?php echo $time_left > 0 ? gmdate("i:s", $time_left) . " remaining" : "Token Expired"; ?>
+                </p>
+                <button type="submit" name="generate">Generate New Token</button>
+            </form>
 </body>
+
 </html>
