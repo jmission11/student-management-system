@@ -4,6 +4,12 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+if (isset($_SESSION['UserLogin'])) {
+    echo "<div class='message success'>Welcome " . $_SESSION['UserLogin'] . '</div>';
+} else {
+    echo "<div class='message info'>Welcome Guest</div>";
+}
+
 include_once("connections/connections.php");
 
 $con = connection();
@@ -51,27 +57,37 @@ $row_count = $students->num_rows;
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <a href="index.php" id="title">Student Management</a>
-    <br><br>
-    <form action="result.php" method="get" id="index">
-        <input type="text" name="search" id="search" value="<?php echo htmlspecialchars($search); ?>"> <!-- Preserve search value -->
-        <button type="submit">Search</button>
-    </form>
-    <?php if(isset($_SESSION['UserLogin'])){ ?>
-    <a href="logout.php" id = "logout">Logout</a>
-    <?php }else{ ?>
-        <a href="login.php" id = "login">Login</a>
-    <?php } 
-    if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){?>
-    <a href="add.php">Add New Student</a>
+
+<body id="index-body">
+    <div class="wrapper">
+        <div class="index-title">
+            <a href="index.php">Student Management</a>
+        </div>
+        <br>
+        <br>
+        <div class="index-seach-container">
+            <form action="result.php" method="get" id="index">
+                <input type="text" name="search" id="search" class="index-search-input">
+                <button type="submit" name="submit" class="index-submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <?php if (isset($_SESSION['UserLogin'])) { ?>
+        <a href="logout.php" id="logout">Logout</a>
+    <?php } else { ?>
+        <a href="login.php" id="login">Login</a>
+    <?php }
+    if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
+        <a href="add.php">Add New Student</a>
     <?php } ?>
+
     <table>
         <thead>
             <tr>
@@ -81,14 +97,14 @@ $row_count = $students->num_rows;
             </tr>
         </thead>
         <tbody>
-            <?php if ($row_count > 0) { 
+            <?php if ($row_count > 0) {
                 while ($row = $students->fetch_assoc()) { ?>
                     <tr>
-                        <td><a href="details.php?ID=<?php echo $row['id']; ?>"><?php echo $row['id']; ?></a></td>
+                        <td width="100"><a href="details.php?ID=<?php echo $row['id']; ?>"><?php echo $row['id']; ?></a></td>
                         <td><?php echo $row['firstname']; ?></td>
                         <td><?php echo $row['lastname']; ?></td>
                     </tr>
-                <?php } 
+                <?php }
             } else { ?>
                 <tr>
                     <td colspan="3">No results found.</td>
@@ -97,4 +113,5 @@ $row_count = $students->num_rows;
         </tbody>
     </table>
 </body>
+
 </html>

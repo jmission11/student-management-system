@@ -1,67 +1,297 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
 }
 
-body{
-    font-family: Arial, sans-serif;
-
+/* ***************MESSAGES*********** */
+.message {
+  width: 100%;
+  padding: 1rem;
 }
 
-.login-container{
-    
-    margin: 0 auto;
-    width: 25%;
-    margin-top: 8vh;
-}
-.login-container h1{
-    text-align: center;
-}
-.form-element{
-    width: 100%;
+.message.warning {
+  background-color: rgb(255, 255, 167);
+  border-left: 6px solid rgb(252, 252, 161);
+  color: rgb(255, 0, 0);
+  font-size: 25px;
+  font-style: italic;
 }
 
-.form-element label{
-    display: block;
-    font-size: 22px;
-    margin-top: 1rem;
+.message.success {
+  background-color: rgb(0, 255, 13);
+  border-left: 6px solid rgb(6, 214, 17);
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  font-style: italic;
+}
+
+.message.info {
+  background-color: rgb(139, 150, 255);
+  border-left: 6px solid rgb(83, 101, 255);
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  font-style: italic;
+}
+
+/* end message */
+
+/* ************LOGIN************* */
+
+body {
+  font-family: Arial, sans-serif;
+}
+#login-body {
+  background-image: linear-gradient(
+      0deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(
+      157.5deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(
+      112.5deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(90deg, rgb(173, 92, 95), rgb(110, 20, 174));
+  background-blend-mode: overlay, overlay, overlay, overlay, normal;
+}
+
+.login-container {
+  margin: 0 auto;
+  width: 25%;
+  margin-top: 8vh;
+}
+
+.login-container h1 {
+  text-align: center;
+}
+h1 {
+  font-size: 40px;
+}
+.form_logo {
+  width: 40%;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+}
+.form_logo img {
+  width: 100%;
+  height: auto;
+}
+
+.form-element {
+  width: 100%;
+}
+
+.form-element label {
+  display: block;
+  font-size: 22px;
+  margin-top: 1rem;
 }
 
 .form-element input[type="text"],
-.form-element input[type="password"]{
-    font-size: 22px;
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: gray;
+.form-element input[type="password"],
+.login-container button {
+  font-size: 22px; /* Consistent font size */
+  width: 100%; /* Elements are full width */
+  padding: 12px; /* Consistent padding */
+  border: 1px solid #ccc; /* Consistent border */
+  border-radius: 4px; /* Consistent border-radius */
+  box-sizing: border-box; /* Fixes sizing issues */
+  color: gray;
 }
 
-.login-container button{
-    width: 100%;
-    letter-spacing: 6px;
-    border-radius: 4px;
-    margin-top: 2rem;
-    font-size: 32px;
-    padding: 1rem;
-    background-color: rgb(75, 108, 255);
-    border: none;background-color: rgb(75, 108, 255);
-    color: white;
-    cursor: pointer;
+.login-container {
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 5px 5px 10px #8888;
 }
 
-.login-container button:hover{
-    background-color: rgb(253, 35, 35);
+.login-container button {
+  letter-spacing: 6px;
+  margin-top: 2rem;
+  font-size: 32px;
+  background-color: rgb(75, 108, 255);
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
-.register{
-    color: green;
-    margin-top:10px;
-	font-size: 18px;
-    font-style: italic;
+.login-container button:hover {
+  background-color: rgb(35, 155, 253);
 }
 
-.register:hover{
-    color: rgb(140, 140, 255);
+.register {
+  margin-top: 10px;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.register a:hover {
+  color: rgb(140, 140, 255);
+}
+
+/* *************************END LOGIN******************************** */
+
+
+
+/* ********************************index******************************** */
+/* #index-body {
+  background-image: linear-gradient(
+      178deg,
+      rgb(209, 209, 209),
+      rgb(207, 207, 207)
+    ),
+    linear-gradient(
+      133deg,
+      rgb(177, 223, 206) 0%,
+      rgb(177, 223, 206) 46%,
+      rgb(147, 192, 214) 46%,
+      rgb(147, 192, 214) 56%,
+      rgb(117, 162, 222) 56%,
+      rgb(117, 162, 222) 61%,
+      rgb(86, 131, 229) 61%,
+      rgb(86, 131, 229) 64%,
+      rgb(56, 101, 237) 64%,
+      rgb(56, 101, 237) 82%,
+      rgb(26, 70, 245) 82%,
+      rgb(26, 70, 245) 100%
+    ),
+    linear-gradient(
+      223deg,
+      rgb(177, 223, 206) 0%,
+      rgb(177, 223, 206) 46%,
+      rgb(147, 192, 214) 46%,
+      rgb(147, 192, 214) 56%,
+      rgb(117, 162, 222) 56%,
+      rgb(117, 162, 222) 61%,
+      rgb(86, 131, 229) 61%,
+      rgb(86, 131, 229) 64%,
+      rgb(56, 101, 237) 64%,
+      rgb(56, 101, 237) 82%,
+      rgb(26, 70, 245) 82%,
+      rgb(26, 70, 245) 100%
+    );
+  background-blend-mode: overlay, overlay, normal;
+} */
+.wrapper {
+  padding: 0 2rem 0 2rem;
+}
+
+.index-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+  letter-spacing: 3px;
+}
+
+.index-title a {
+  text-decoration: none;
+  color: black;
+}
+
+.index-title a:hover {
+  text-decoration: underline;
+}
+
+
+
+table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: rgba(128, 128, 128, 0.397) solid 1px;
+}
+
+tr:nth-child(even) {
+  background-color: #93aaff3b;
+}
+
+.search-container{
+  width: 20%;
+  padding-bottom: 1rem;
+}
+
+.index-search-input {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid #ddd;
+  float: left;
+  width: 80%;
+  background: white;
+}
+.index-submit{
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background:#2873ff;
+  color: white;
+  font-size: 17;
+
 }
