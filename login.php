@@ -36,17 +36,27 @@ if(isset($_POST['login']))
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
-    <form action="" method = "post" id="login">
+    <div class="login-container">
     <h1>Login</h1>
     <br>
-    <label>Username</label>
-    <input type="text" name="username" id="username">
-    <br>
-    <label>Password</label>
-    <input type="password" name="password" id="password">
-    <br>
-    <button type="submit" name="login" id="login">Login</button>
-    <a href="register.php">Register</a>
-    </form>
+        <form action="" method = "post" id="login">
+
+            <div class="form-element">
+                <label>Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter Username" required>
+            </div>
+
+            <div class="form-element">
+                <label>Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password" required>
+            </div>
+
+            <button type="submit" name="login" id="login">Login</button>
+
+            <div class="register" class="register">
+            <a href="register.php">Register</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

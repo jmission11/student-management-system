@@ -64,16 +64,14 @@ $row_count = $students->num_rows;
         <input type="text" name="search" id="search" value="<?php echo htmlspecialchars($search); ?>"> <!-- Preserve search value -->
         <button type="submit">Search</button>
     </form>
-    <div id="clickables">
-    <?php if (isset($_SESSION['UserLogin'])) { ?>
-        <a href="logout.php" id="logout">Logout</a>
-    <?php } else { ?>
-        <a href="login.php" id="login">Login</a>
-    <?php }
-    if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
-        <a href="add.php">Add New Student</a>
+    <?php if(isset($_SESSION['UserLogin'])){ ?>
+    <a href="logout.php" id = "logout">Logout</a>
+    <?php }else{ ?>
+        <a href="login.php" id = "login">Login</a>
+    <?php } 
+    if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){?>
+    <a href="add.php">Add New Student</a>
     <?php } ?>
-    </div>
     <table>
         <thead>
             <tr>

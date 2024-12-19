@@ -37,7 +37,6 @@ $row = $students->fetch_assoc();
         <input type="text" name="search" id="search">
         <button type="submit" name="">Search</button>
     </form>
-    <div id ="clickables">
     <?php if(isset($_SESSION['UserLogin'])){ ?>
     <a href="logout.php" id = "logout">Logout</a>
     <?php }else{ ?>
@@ -46,7 +45,6 @@ $row = $students->fetch_assoc();
     if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){?>
     <a href="add.php">Add New Student</a>
     <?php } ?>
-    </div>
     <table>
         <thead>
             <tr>

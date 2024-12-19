@@ -1,62 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
 body{
     font-family: Arial, sans-serif;
+
 }
-#title{
-    color: black;
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: bold;
-    display: block;
+
+.login-container{
+    
+    margin: 0 auto;
+    width: 25%;
+    margin-top: 8vh;
+}
+.login-container h1{
     text-align: center;
 }
-#title:hover{
-    color: rgb(0, 0, 105);
-    text-decoration: underline;
-
+.form-element{
+    width: 100%;
 }
 
-table { 
-    border:1px solid black;
-    margin: 20px;
-    width: 90%;
-    border-collapse: collapse;
-}
-table, th, td { 
-    text-align: left;
-    padding: 8px;
-
-}
-th{
-    font-style: italic;
-    border-bottom: 1px solid black;
-}
-tr:nth-child(even) {
-    background-color:rgb(219, 219, 250);
+.form-element label{
+    display: block;
+    font-size: 22px;
+    margin-top: 1rem;
 }
 
-#add, #edit, #login, #register{
-    max-width: 300px !important; /* Restrict the maximum width to 300px */
-    width: 100%; /* This ensures responsiveness */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left; /* Center content inside the form */
-    text-align: left;
-    gap: 10px;
-    padding: 20px;
+.form-element input[type="text"],
+.form-element input[type="password"]{
+    font-size: 22px;
+    width: 100%;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Center form horizontally on the page */
+    border-radius: 4px;
+    color: gray;
 }
 
-input{
+.login-container button{
     width: 100%;
-}
-select{
-    width: 100%;
+    letter-spacing: 6px;
+    border-radius: 4px;
+    margin-top: 2rem;
+    font-size: 32px;
+    padding: 1rem;
+    background-color: rgb(75, 108, 255);
+    border: none;background-color: rgb(75, 108, 255);
+    color: white;
+    cursor: pointer;
 }
 
-h2{
-    text-align: center
-}   
+.login-container button:hover{
+    background-color: rgb(253, 35, 35);
+}
+
+.register{
+    color: green;
+    margin-top:10px;
+	font-size: 18px;
+    font-style: italic;
+}
+
+.register:hover{
+    color: rgb(140, 140, 255);
+}
