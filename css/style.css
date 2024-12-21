@@ -4,8 +4,32 @@
   box-sizing: 0;
 }
 
+.back-img {
+  width: 50px; /* Adjust the width as needed */
+  height: auto; /* Adjust the height as needed */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 20px; /* Center the image horizontally */
+}
+
+.back-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
+.back-img img:hover {
+  filter: brightness(1.3); /* Darken the image on hover */
+}
+
 body {
   font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 50px;
 }
 
 /* ***************MESSAGES*********** */
@@ -116,18 +140,97 @@ body {
   background-blend-mode: overlay, overlay, overlay, overlay, normal;
 }
 
-.form-container {
+.login-container {
   margin: 0 auto;
   width: 25%;
-  margin-top: 8vh;
+}
+
+.login-container h1 {
+  margin: 1rem 0 1rem 0;
+  text-align: center;
+}
+
+.login_logo {
+  width: 40%;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+}
+.login_logo img {
+  width: 100%;
+  height: auto;
+}
+
+.login-element {
+  width: 100%;
+}
+
+.login-element label {
+  display: block;
+  font-size: 22px;
+  margin-top: 1rem;
+}
+
+.login-element input[type="text"],
+.login-element input[type="password"],
+.login-element input[type="date"],
+.login-element input[type="Submit"],
+.login-element select,
+.login-container button {
+  font-size: 22px; /* Consistent font size */
+  width: 100%; /* Elements are full width */
+  padding: 12px; /* Consistent padding */
+  border: 1px solid #ccc; /* Consistent border */
+  border-radius: 4px; /* Consistent border-radius */
+  box-sizing: border-box; /* Fixes sizing issues */
+  color: gray;
+}
+
+.login-container {
+  background-color: rgba(255, 255, 255, 0.507);
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 5px 5px 10px #8888;
+}
+
+.login-container button {
+  margin-top: 1rem;
+  letter-spacing: 6px;
+  font-size: 32px;
+  background-color: rgb(75, 108, 255);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: rgb(35, 155, 253);
+}
+
+.login-link {
+  margin: 10px;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.login-link a:hover {
+  color: rgb(140, 140, 255);
+}
+
+/* *************************END LOGIN******************************** */
+
+/* *****************************ADD && EDIT******************************* */
+.form-container {
+  margin: 0 auto;
+  width: 80%;
 }
 
 .form-container h1 {
+  margin: 1rem 0 1rem 0;
   text-align: center;
 }
-h1 {
-  font-size: 40px;
-}
+
 .form_logo {
   width: 40%;
   text-align: center;
@@ -139,8 +242,14 @@ h1 {
   height: auto;
 }
 
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .form-element {
   width: 100%;
+  margin: 0 10px 0 10px;
 }
 
 .form-element label {
@@ -165,16 +274,17 @@ h1 {
 }
 
 .form-container {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.507);
   border: 1px solid grey;
   border-radius: 4px;
   padding: 2rem;
   box-shadow: 5px 5px 10px #8888;
 }
 
-.form-container button {
+.form-container button,
+.form-container input[type="Submit"]{
   letter-spacing: 6px;
-  margin-top: 2rem;
+  margin: 2re 0 0;
   font-size: 32px;
   background-color: rgb(75, 108, 255);
   border: none;
@@ -182,12 +292,13 @@ h1 {
   cursor: pointer;
 }
 
-.form-container button:hover {
+.form-container button:hover,
+.form-container input[type="Submit"]:hover {
   background-color: rgb(35, 155, 253);
 }
 
 .form-link {
-  margin-top: 10px;
+  margin: 10px;
   font-size: 18px;
   font-style: italic;
 }
@@ -195,77 +306,201 @@ h1 {
 .form-link a:hover {
   color: rgb(140, 140, 255);
 }
+/* ******************************END ADD && EDIT******************************* */
 
-/* *************************END LOGIN******************************** */
+/* *****************************AUTH******************************* */
 .auth-container {
-    margin: 0 auto;
-    width: 35%; /* Make it a bit wider than the default forms */
-    margin-top: 10vh;
-    background-color: rgba(255, 255, 255, 0.95); /* Slight transparency for uniqueness */
-    border: none; /* Remove any borders */
-    border-radius: 12px; /* Slightly more rounded to differentiate */
-    padding: 2.5rem; /* Larger padding for a "spacious" look */
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* A slightly stronger shadow */
-    text-align: center; /* Center-align everything inside */
-    backdrop-filter: blur(5px); /* Add a blur effect (optional, for modern browsers) */
+  margin: 0 auto;
+  width: 35%; /* Make it a bit wider than the default forms */
+  margin-top: 10vh;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* Slight transparency for uniqueness */
+  border: none; /* Remove any borders */
+  border-radius: 12px; /* Slightly more rounded to differentiate */
+  padding: 2.5rem; /* Larger padding for a "spacious" look */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* A slightly stronger shadow */
+  text-align: center; /* Center-align everything inside */
+  backdrop-filter: blur(
+    5px
+  ); /* Add a blur effect (optional, for modern browsers) */
 }
 
 .auth-container h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    color: #2d2d2d; /* Slightly different text color */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #2d2d2d; /* Slightly different text color */
 }
 
 .auth-element {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .auth-element label {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #444444;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #444444;
 }
 
 .auth-container textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    resize: none;
-    color: #555555;
-    background-color: rgba(240, 240, 240, 1); /* Slightly lighter background */
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: none;
+  color: #555555;
+  background-color: rgba(240, 240, 240, 1); /* Slightly lighter background */
 }
 
 .auth-container button {
-    font-size: 1.2rem;
-    font-weight: bold;
-    width: 100%;
-    color: white;
-    padding: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background-color: #2c91ff; /* Change button color to stand out */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 100%;
+  color: white;
+  padding: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #2c91ff; /* Change button color to stand out */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .auth-container button:hover {
-    background-color: #1f6cdd; /* Darker shade for hover */
+  background-color: #1f6cdd; /* Darker shade for hover */
 }
 
 .auth-container p#timer {
-    font-size: 0.95rem; /* Slightly smaller text for the timer */
-    color: #888888;
-    margin-top: -8px;
+  font-size: 0.95rem; /* Slightly smaller text for the timer */
+  color: #888888;
+  margin-top: -8px;
+}
+
+/* ***********************END AUTH********************************* */
+
+/* *****************************DETAILS**************************** */
+
+.student-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.student-image img {
+  width: 30%;
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.details-info h4 {
+  color: blue;
+  text-align: center;
+  font-size: 23px;
+  font-style: italic;
+}
+.details-info p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.details-info ul {
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.details-info li {
+  width: 50%;
+  font-size: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.details-button {
+  display: flex;
+  width: 20%;
+  gap: 10px; /* Space between buttons */
+}
+
+.details-button form {
+  width: 50%;
+  margin: 0;
+}
+
+.details-button form button {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.details-back-img {
+  display: flex;
+  align-items: center;
+}
+
+.details-back-img img {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensure the image covers the container */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background-color: #4CAF50;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-link:hover {
+  background-color: #45a049;
 }
 
 
+.edit-button {
+  background-color: #2c91ff;
+}
 
-/* ***********************END AUTH********************************* */
+.edit-button:hover {
+  background-color: #31c6f3;
+}
+
+.delete-button {
+  background-color: #ff0000;
+}
+
+.delete-button:hover {
+  background-color: #ff4d4d;
+}
+
+/* *****************************END DETAILS**************************** */
+
 /* ********************************index******************************** */
 
 .wrapper {
@@ -337,7 +572,7 @@ tr:nth-child(even) {
 }
 
 .view {
-  border:none;
+  border: none;
   background: #2c91ff;
   color: white;
   text-decoration: none;
@@ -378,7 +613,4 @@ tr:nth-child(even) {
   text-decoration: underline;
 }
 
-
-
 /* ***************END INDEX************** */
-
