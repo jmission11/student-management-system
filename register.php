@@ -49,34 +49,57 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <a href='index.php'><-Back< /a>
-            <form action="" method="post" id="register">
-                <h2>Register</h2>
-                <label>User Name</label>
-                <input type="text" name="user" id="user">
-                <br>
-                <label>Password</label>
-                <input type="password" name="password" id="password">
-                <br>
-                <label>Confirm Password</label>
-                <input type="password" name="conpassword" id="conpassword">
-                <br>
-                <label>Access Type</label>
-                <select name="access" id="access">
-                    <option value="ADMIN">Admin</option>
-                    <option value="USER">User</option>
-                </select>
-                <br>
-                <label>Access Token</label>
-                <input type="text" name="token" id="token">
-                <br>
-                <input type="submit" name="submit" value="Submit">
-                <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
-                    <a href='auth.php'>Admin Token</a>
-                <?php } else { ?>
-                    <a href='login.php'>Login</a>
-                <?php } ?>
+    <a href='index.php'><-Back</a>
+            <div class="form-container">
+                <form action="" method="post" id="register">
+                    <h1>Register</h1>
+                    <div class="form-element">
+                        <label>User Name</label>
+                        <input type="text" name="user" id="user">
+                    </div>
+                    <br>
+
+                    <div class="form-element">
+                        <label>Password</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <br>
+
+                    <div class="form-element">
+                        <label>Confirm Password</label>
+                        <input type="password" name="conpassword" id="conpassword">
+                    </div>
+                    <br>
+
+                    <div class="form-element">
+                        <label>Access Type</label>
+                        <select name="access" id="access">
+                            <option value="ADMIN">Admin</option>
+                            <option value="USER">User</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-element">
+                        <label>Access Token</label>
+                        <input type="text" name="token" id="token">
+                    </div>
+                    <br>
+
+                    <button type="submit" name="submit">Submit</button>
+
+
+                    <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
+                        <div class="form-link">
+                            <a href='auth.php'>Admin Token</a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="form-link">
+                            <a href='login.php'>Login</a>
+                        </div>
+                    <?php } ?>
+            </div>
             </form>
+            </div>
 </body>
 
 </html>

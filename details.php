@@ -35,18 +35,25 @@ $row = $students->fetch_assoc();
 </head>
 
 <body>
+<div class="wrapper">
     <a href="index.php"><- Back</a>
-            <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
-                <form action="delete.php" method="post" id="detailsPage">
-                    <a href="edit.php?ID=<?php echo $row['id']; ?>">Edit</a>
-                    <button type="submit" name="delete">Delete</button>
-                    <input type="hidden" name="ID" value="<?php echo $row['id']; ?>">
-                </form>
-            <?php } ?>
-
             <br>
             <h2><?php echo $row['firstname'] . " " . $row['lastname'] ?></h2>
             <p>is a <?php echo $row['gender']; ?></p>
+
+            <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
+            
+                <form action="edit.php?ID=<?php echo $row['id']; ?>">
+                    <button type="submit" name="edit">Edit</button>
+                </form>
+            
+                <form action="delete.php" method="post" id="detailsPage">
+                    <button type="submit" name="delete">Delete</button>
+                    <input type="hidden" name="ID" value="<?php echo $row['id']; ?>">
+                </form>
+            
+            <?php } ?>
+</div>
 </body>
 
 </html>

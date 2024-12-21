@@ -44,35 +44,38 @@ $row = $students->fetch_assoc();
                 <button type="submit" name="submit" class="index-submit">Search</button>
             </form>
         </div>
-    </div>
-    <?php if (isset($_SESSION['UserLogin'])) { ?>
-        <a href="logout.php" id="logout">Logout</a>
-    <?php } else { ?>
-        <a href="login.php" id="login">Login</a>
-    <?php }
-    if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
-        <a href="add.php">Add New Student</a>
-    <?php } ?>
+        <br>
+        <div class="clickables">
+            <?php if (isset($_SESSION['UserLogin'])) { ?>
+                <a href="logout.php" id="logout" class="login-out-link">Logout</a>
+            <?php } else { ?>
+                <a href="login.php" id="login" class="login-out-link">Login</a>
+            <?php } ?>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID no.</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php do { ?>
+            <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
+                <a href="add.php" class="add-link">New Student</a>
+            <?php } ?>
+        </div>
+        <table>
+            <thead>
                 <tr>
-                    <td width="100"><a href="details.php?ID=<?php echo $row['id']; ?>"><?php echo $row['id']; ?></a></tdw>
-                    <td><?php echo $row['firstname']; ?></td>
-                    <td><?php echo $row['lastname']; ?></td>
+                    <th></th>
+                    <th>ID no.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                 </tr>
-            <?php } while ($row = $students->fetch_assoc()) ?>
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+                <?php do { ?>
+                    <tr>
+                        <td width="30"><a class ="view" href="details.php?ID=<?php echo $row['id']; ?>" >view</a></td>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['firstname']; ?></td>
+                        <td><?php echo $row['lastname']; ?></td>
+                    </tr>
+                <?php } while ($row = $students->fetch_assoc()) ?>
+            </tbody>
+        </table>
     </div>
 </body>
 

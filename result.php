@@ -78,40 +78,44 @@ $row_count = $students->num_rows;
                 <button type="submit" name="submit" class="index-submit">Search</button>
             </form>
         </div>
-    </div>
-    <?php if (isset($_SESSION['UserLogin'])) { ?>
-        <a href="logout.php" id="logout">Logout</a>
-    <?php } else { ?>
-        <a href="login.php" id="login">Login</a>
-    <?php }
-    if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
-        <a href="add.php">Add New Student</a>
-    <?php } ?>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID no.</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if ($row_count > 0) {
-                while ($row = $students->fetch_assoc()) { ?>
-                    <tr>
-                        <td width="100"><a href="details.php?ID=<?php echo $row['id']; ?>"><?php echo $row['id']; ?></a></td>
-                        <td><?php echo $row['firstname']; ?></td>
-                        <td><?php echo $row['lastname']; ?></td>
-                    </tr>
-                <?php }
-            } else { ?>
-                <tr>
-                    <td colspan="3">No results found.</td>
-                </tr>
+        <br>
+        <div class="clickables">
+            <?php if (isset($_SESSION['UserLogin'])) { ?>
+                <a href="logout.php" id="logout" class="login-out-link">Logout</a>
+            <?php } else { ?>
+                <a href="login.php" id="login" class="login-out-link">Login</a>
             <?php } ?>
-        </tbody>
-    </table>
+
+            <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
+                <a href="add.php" class="add-link">New Student</a>
+            <?php } ?>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID no.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($row_count > 0) {
+                    while ($row = $students->fetch_assoc()) { ?>
+                        <tr>
+                            <td width="30"><a class="view" href="details.php?ID=<?php echo $row['id']; ?>">view</a></td>
+                            <td><?php echo $row['id']; ?></td>
+                            <td><?php echo $row['firstname']; ?></td>
+                            <td><?php echo $row['lastname']; ?></td>
+                        </tr>
+                    <?php }
+                } else { ?>
+                    <tr>
+                        <td colspan="3">No results found.</td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
 </body>
 
 </html>
