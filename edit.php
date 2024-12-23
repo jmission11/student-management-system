@@ -16,38 +16,44 @@ $sql = "SELECT * FROM student_list WHERE id = '$id'";
 $students = $con->query($sql) or die($con->error);
 $row = $students->fetch_assoc();
 
-if (isset($_POST['submit'])) {
 
-    $fname = $_POST['firstname'];
-    $lname = $_POST['lastname'];
-    $gender = $_POST['gender'];
-    $dob = $_POST['dob'];
-    $address = $_POST['address'];
-    $program = $_POST['program'];
-    $yearlevel = $_POST['yearlevel'];
-    $image = $_FILES['image']['name'];
-    $target = "data_images/" . basename($image);
+if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
+    if (isset($_POST['submit'])) {
 
-    if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob)) {
-        if (!empty($image)) {
-            $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel', `images`='$image' WHERE `id`='$id'";
+        $fname = $_POST['firstname'];
+        $lname = $_POST['lastname'];
+        $gender = $_POST['gender'];
+        $dob = $_POST['dob'];
+        $address = $_POST['address'];
+        $program = $_POST['program'];
+        $yearlevel = $_POST['yearlevel'];
+        $image = $_FILES['image']['name'];
+        $target = "data_images/" . basename($image);
+
+        if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob)) {
+            if (!empty($image)) {
+                $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel', `images`='$image' WHERE `id`='$id'";
+            } else {
+                $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel' WHERE `id`='$id'";
+            }
+            $con->query($sql) or die($con->error);
+
+            if (!empty($image) && !move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+                echo "Failed to upload image.";
+            } else {
+                header("Location: index.php");
+                exit;
+            }
         } else {
-            $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel' WHERE `id`='$id'";
+            echo "Please fill in all fields.";
         }
-        $con->query($sql) or die($con->error);
-
-        if (!empty($image) && !move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-            echo "Failed to upload image.";
-        } else {
-            header("Location: index.php");
-            exit;
-        }
-    } else {
-        echo "Please fill in all fields.";
     }
+} else {
+    header("Location: stop.php");
 }
-        
-    
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +67,7 @@ if (isset($_POST['submit'])) {
     <script>
         function previewImage(event) {
             var reader = new FileReader();
-            reader.onload = function() {
+            reader.onload = function () {
                 var output = document.getElementById('image-preview');
                 output.src = reader.result;
             }
@@ -118,7 +124,7 @@ if (isset($_POST['submit'])) {
             <div class="form-row">
                 <div class="form-element">
                     <label>Address</label>
-                    <input type="text" name="address" id="address" value="<?php echo $row['address']?>" required>
+                    <input type="text" name="address" id="address" value="<?php echo $row['address'] ?>" required>
                 </div>
             </div>
 
@@ -129,11 +135,11 @@ if (isset($_POST['submit'])) {
                     <label>Program</label>
                     <select name="program" id="program" required>
                         <option value="">---select program---</option>
-                        <option value="BSA"<?php echo ($row['program'] == "BSA") ? 'selected' : ''; ?>>BSA</option>
-                        <option value="BSABE"<?php echo ($row['program'] == "BSABE") ? 'selected' : ''; ?>>BSABE</option>
-                        <option value="BSF"<?php echo ($row['program'] == "BSF") ? 'selected' : ''; ?>>BSF</option>
-                        <option value="BSES"<?php echo ($row['program'] == "BSES") ? 'selected' : ''; ?>>BSES</option>
-                        <option value="BSCS"<?php echo ($row['program'] == "BSCS") ? 'selected' : ''; ?>>BSCS</option>
+                        <option value="BSA" <?php echo ($row['program'] == "BSA") ? 'selected' : ''; ?>>BSA</option>
+                        <option value="BSABE" <?php echo ($row['program'] == "BSABE") ? 'selected' : ''; ?>>BSABE</option>
+                        <option value="BSF" <?php echo ($row['program'] == "BSF") ? 'selected' : ''; ?>>BSF</option>
+                        <option value="BSES" <?php echo ($row['program'] == "BSES") ? 'selected' : ''; ?>>BSES</option>
+                        <option value="BSCS" <?php echo ($row['program'] == "BSCS") ? 'selected' : ''; ?>>BSCS</option>
                     </select>
                 </div>
 
@@ -142,10 +148,14 @@ if (isset($_POST['submit'])) {
                     <label>Year Level</label>
                     <select name="yearlevel" id="yearlevel" required>
                         <option value="">---select year level---</option>
-                        <option value="1st Year"<?php echo ($row['yearlevel'] == "1st Year") ? 'selected' : ''; ?>>1st Year</option>
-                        <option value="2nd Year"<?php echo ($row['yearlevel'] == "2nd Year") ? 'selected' : ''; ?>>2nd Year</option>
-                        <option value="3rd Year"<?php echo ($row['yearlevel'] == "3rd Year") ? 'selected' : ''; ?>>3rd Year</option>
-                        <option value="4th Year"<?php echo ($row['yearlevel'] == "4th Year") ? 'selected' : ''; ?>>4th Year</option>
+                        <option value="1st Year" <?php echo ($row['yearlevel'] == "1st Year") ? 'selected' : ''; ?>>1st
+                            Year</option>
+                        <option value="2nd Year" <?php echo ($row['yearlevel'] == "2nd Year") ? 'selected' : ''; ?>>2nd
+                            Year</option>
+                        <option value="3rd Year" <?php echo ($row['yearlevel'] == "3rd Year") ? 'selected' : ''; ?>>3rd
+                            Year</option>
+                        <option value="4th Year" <?php echo ($row['yearlevel'] == "4th Year") ? 'selected' : ''; ?>>4th
+                            Year</option>
                     </select>
                 </div>
             </div>
@@ -158,7 +168,8 @@ if (isset($_POST['submit'])) {
                     </div>
                     <br>
                     <div class="form-element">
-                        <img id="image-preview" src="data_images/<?php echo $row['images']; ?>" alt="Student Image" width="100">
+                        <img id="image-preview" src="data_images/<?php echo $row['images']; ?>" alt="Student Image"
+                            width="100">
                     </div>
                 </div>
             </div>

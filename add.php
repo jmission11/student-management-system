@@ -3,32 +3,38 @@
 include_once("connections/connections.php");
 $con = connection();
 
-if (isset($_POST['submit'])) {
+if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){
+  if (isset($_POST['submit'])) {
 
-  $fname = $_POST['firstname'];
-  $lname = $_POST['lastname'];
-  $gender = $_POST['gender'];
-  $dob = $_POST['dob'];
-  $address = $_POST['address'];
-  $program = $_POST['program'];
-  $yearlevel = $_POST['yearlevel'];
-  $image = $_FILES['image']['name'];
-  $target = "data_images/" . basename($image);
+    $fname = $_POST['firstname'];
+    $lname = $_POST['lastname'];
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
+    $address = $_POST['address'];
+    $program = $_POST['program'];
+    $yearlevel = $_POST['yearlevel'];
+    $image = $_FILES['image']['name'];
+    $target = "data_images/" . basename($image);
 
-  if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob) && !empty($image)) {
-    $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `images`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$image')";
-    $con->query($sql) or die($con->error);
 
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-      header("Location: index.php");
-      exit;
+    if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob) && !empty($image)) {
+      $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `images`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$image')";
+      $con->query($sql) or die($con->error);
+
+      if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        header("Location: index.php");
+        exit;
+      } else {
+        echo "Failed to upload image.";
+      }
     } else {
-      echo "Failed to upload image.";
+      echo "Please fill in all fields.";
     }
-  } else {
-    echo "Please fill in all fields.";
   }
+}else{
+  header("Location: stop.php");
 }
+
 
 ?>
 

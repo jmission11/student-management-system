@@ -8,34 +8,40 @@ $con = connection();
 
 $token_duration = 1800; // 1800 seconds = 30 minutes
 
-if (isset($_SESSION['token_issue_time']) && time() - $_SESSION['token_issue_time'] > 1800) { // 1800 seconds = 30 minutes
-    unset($_SESSION['current_token']);
-    unset($_SESSION['token_issue_time']);
-}
 
-if (isset($_POST['generate']) || !isset($_SESSION['current_token'])) {
-    // Fetch a random token from the database
-    $sql = "SELECT `authcode` FROM `tokens` ORDER BY RAND() LIMIT 1";
-    $result = $con->query($sql) or die($con->error);
-    $row = $result->fetch_assoc();
-
-    if ($row) {
-        $_SESSION['current_token'] = $row['authcode']; // Save token in session
-        $_SESSION['token_issue_time'] = time();       // Save issue timestamp
-    } else {
-        $_SESSION['current_token'] = "No tokens available";
+if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){
+    if (isset($_SESSION['token_issue_time']) && time() - $_SESSION['token_issue_time'] > 1800) { // 1800 seconds = 30 minutes
+        unset($_SESSION['current_token']);
+        unset($_SESSION['token_issue_time']);
     }
+
+    if (isset($_POST['generate']) || !isset($_SESSION['current_token'])) {
+        // Fetch a random token from the database
+        $sql = "SELECT `authcode` FROM `tokens` ORDER BY RAND() LIMIT 1";
+        $result = $con->query($sql) or die($con->error);
+        $row = $result->fetch_assoc();
+
+        if ($row) {
+            $_SESSION['current_token'] = $row['authcode']; // Save token in session
+            $_SESSION['token_issue_time'] = time();       // Save issue timestamp
+        } else {
+            $_SESSION['current_token'] = "No tokens available";
+        }
+    }
+
+    $current_token = isset($_SESSION['current_token']) ? $_SESSION['current_token'] : "No tokens available";
+
+    if (isset($_SESSION['token_issue_time'])) {
+        $time_left = ($token_duration - (time() - $_SESSION['token_issue_time'])) > 0
+            ? $token_duration - (time() - $_SESSION['token_issue_time'])
+            : 0;
+    } else {
+        $time_left = 0;
+    }
+}else{
+    header("Location: stop.php");
 }
 
-$current_token = isset($_SESSION['current_token']) ? $_SESSION['current_token'] : "No tokens available";
-
-if (isset($_SESSION['token_issue_time'])) {
-    $time_left = ($token_duration - (time() - $_SESSION['token_issue_time'])) > 0
-        ? $token_duration - (time() - $_SESSION['token_issue_time'])
-        : 0;
-} else {
-    $time_left = 0;
-}
 ?>
 
 <!DOCTYPE html>

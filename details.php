@@ -49,7 +49,7 @@ if (isset($_GET['ID'])) {
   <div class="wrapper">
     <?php if (!empty($row['images'])) { ?>
       <div class="student-image">
-        <img src="data_images/<?php echo $row['images']; ?>" alt="Student Image">
+        <a href="data_images/<?php echo $row['images']; ?>"><img src="data_images/<?php echo $row['images']; ?>" alt="Student Image"></a>
       </div>
     <?php } else { ?>
       <div class="student-image">

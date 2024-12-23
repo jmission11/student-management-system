@@ -90,14 +90,12 @@ body {
 }
 
 .Confirmation-image {
-  width: 80%;
-  display: flex;
+  width: 100%;
   justify-content: center;
 }
 
 .Confirmation-image img {
-  size: 300px auto;
-  margin-left: 3rem;
+  width: 20%;
 }
 
 h1{

@@ -36,7 +36,7 @@ if (isset($_GET['ID'])) {
       <h2>Are you sure you want to</h2> <h1>DELETE</h1><h2> this record?</h2>
       <div class="confirmation-container">
       <?php if (!empty($row['images'])) { ?>
-        <div class="confirmation-image">
+        <div class="Confirmation-image">
           <img src="data_images/<?php echo $row['images']; ?>" alt="Student Image">
         </div>
       <?php } else { ?>

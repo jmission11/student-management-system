@@ -10,10 +10,14 @@ $con = connection();
 if (isset($_GET['ID'])) {
     $id = $_GET['ID'];
 
-    $sql = "DELETE FROM student_list WHERE id = '$id'";
-    $con->query($sql) or die($con->error);
+    if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){
+        $sql = "DELETE FROM student_list WHERE id = '$id'";
+        $con->query($sql) or die($con->error);
 
-    header("Location: index.php");
+        header("Location: index.php");
+    } else{
+        header("Location: stop.php");
+    }
     exit;
 } else {
     echo "No ID parameter provided.";
