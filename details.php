@@ -29,7 +29,6 @@ if (isset($_GET['ID'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Management</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/confirmation.js"></script>
 </head>
 
 <body>
@@ -42,7 +41,7 @@ if (isset($_GET['ID'])) {
     <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
       <div class="details-button">
         <a href="edit.php?ID=<?php echo $row['id']; ?>" class="button-link edit-button">Edit</a>
-        <a href="delete.php?ID=<?php echo $row['id']; ?>" class="button-link delete-button">Delete</a>
+        <a href="confirmation.php?ID=<?php echo $row['id']; ?>" class="button-link delete-button">Delete</a>
       </div>
     <?php } ?>
   </div>

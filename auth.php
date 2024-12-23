@@ -70,23 +70,28 @@ if (isset($_SESSION['token_issue_time'])) {
 </head>
 
 <body>
-    <a href='register.php'><-Back</a>
-            <div class="auth-container">
-                <form method="post" id="auth">
-                    <h1>Admin Token Generator</h1>
-                    <br>
-                    <div class="auth-element">
-                        <label for="token" class="auth-label">Generated Token (Expires in 30 Minutes):</label>
+    <div class="back-img">
+        <a href="register.php">
+            <img src="img/back.png" alt="Back" id="back-icon">
+        </a>
+    </div>
+    <div class="auth-container">
+        <form method="post" id="auth">
+            <h1>Admin Token Generator</h1>
+            <br>
+            <div class="auth-element">
+                <label for="token" class="auth-label">Generated Token (Expires in 30 Minutes):</label>
 
-                        <textarea id="token" name="token" rows="1" cols="40"
-                            readonly><?php echo $current_token; ?></textarea>
-                        <p id="timer">
-                            <?php echo $time_left > 0 ? gmdate("i:s", $time_left) . " remaining" : "Token Expired"; ?>
-                        </p>
-                    </div>
-                    <button type="submit" name="generate">Generate New Token</button>
-                </form>
+                <textarea id="token" name="token" rows="1" cols="40"
+                    readonly><?php echo $current_token; ?></textarea>
+                <br>
+                <p id="timer">
+                    <?php echo $time_left > 0 ? gmdate("i:s", $time_left) . " remaining" : "Token Expired"; ?>
+                </p>
             </div>
+            <button type="submit" name="generate">Generate New Token</button>
+        </form>
+    </div>
 </body>
 
 </html>

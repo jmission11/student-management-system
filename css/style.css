@@ -4,6 +4,11 @@
   box-sizing: 0;
 }
 
+.wrapper {
+  margin: 2rem;
+  padding: 0 2rem 0 2rem;
+}
+
 .back-img {
   width: 50px; /* Adjust the width as needed */
   height: auto; /* Adjust the height as needed */
@@ -141,6 +146,11 @@ body {
 }
 
 .login-container {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 5px 5px 10px #8888;
   margin: 0 auto;
   width: 25%;
 }
@@ -184,14 +194,6 @@ body {
   border-radius: 4px; /* Consistent border-radius */
   box-sizing: border-box; /* Fixes sizing issues */
   color: gray;
-}
-
-.login-container {
-  background-color: rgba(255, 255, 255, 0.507);
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 2rem;
-  box-shadow: 5px 5px 10px #8888;
 }
 
 .login-container button {
@@ -282,7 +284,7 @@ body {
 }
 
 .form-container button,
-.form-container input[type="Submit"]{
+.form-container input[type="Submit"] {
   letter-spacing: 6px;
   margin: 2re 0 0;
   font-size: 32px;
@@ -341,6 +343,7 @@ body {
 }
 
 .auth-element label {
+  width: 100%;
   display: block;
   font-size: 1.1rem;
   font-weight: bold;
@@ -348,7 +351,6 @@ body {
 }
 
 .auth-container textarea {
-  width: 100%;
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -471,7 +473,7 @@ h2 {
   display: inline-block;
   padding: 10px 20px;
   color: white;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   text-align: center;
   text-decoration: none;
   border-radius: 4px;
@@ -481,7 +483,6 @@ h2 {
 .button-link:hover {
   background-color: #45a049;
 }
-
 
 .edit-button {
   background-color: #2c91ff;
@@ -502,11 +503,6 @@ h2 {
 /* *****************************END DETAILS**************************** */
 
 /* ********************************index******************************** */
-
-.wrapper {
-  margin: 2rem;
-  padding: 0 2rem 0 2rem;
-}
 
 .index-title {
   text-align: center;
@@ -614,3 +610,24 @@ tr:nth-child(even) {
 }
 
 /* ***************END INDEX************** */
+
+.confirmation-image {
+  display: flex;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.confirmation-image img {
+  width: 20% auto;
+  justify-content: center;
+}
+
+.confirm-button {
+  background-color: red;
+}
+
+.confirmation-container {
+  margin: 2rem;
+}

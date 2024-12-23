@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+.wrapper {
+  margin: 2rem;
+  padding: 0 2rem 0 2rem;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: linear-gradient(
+      0deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(
+      157.5deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(
+      112.5deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgb(213, 229, 183) 0%,
+      rgb(213, 229, 183) 17%,
+      rgb(189, 213, 190) 17%,
+      rgb(189, 213, 190) 29%,
+      rgb(166, 196, 196) 29%,
+      rgb(166, 196, 196) 38%,
+      rgb(142, 180, 203) 38%,
+      rgb(142, 180, 203) 47%,
+      rgb(118, 164, 210) 47%,
+      rgb(118, 164, 210) 58%,
+      rgb(95, 147, 216) 58%,
+      rgb(95, 147, 216) 88%,
+      rgb(71, 131, 223) 88%,
+      rgb(71, 131, 223) 100%
+    ),
+    linear-gradient(90deg, rgb(173, 92, 95), rgb(110, 20, 174));
+  background-blend-mode: overlay, overlay, overlay, overlay, normal;
+}
+
+.confirmation-container{
+  margin: 2rem;
+}
+
+.Confirmation-image {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.Confirmation-image img {
+  size: 300px auto;
+  margin-left: 3rem;
+}
+
+h1{
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 50px;
+  font-weight: bold;
+  color: rgb(189, 0, 0);
+}
+
+h2{
+  font-size: 40px;
+  font-weight: bold;
+  color: rgb(71, 0, 0);
+}
+
+h3{
+  font-size: 30px;
+}
+p{
+  font-size: 22px;
+  font-style: italic;
+}
+
+a{
+  margin-right: 1rem;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  border-radius: 2px;
+  padding: 18px 35px;
+}
+.confirm-button{
+  border-radius: 8px;
+  background-color: red;
+}
+
+.confirm-button:hover{
+  background-color: rgb(177, 0, 0);
+}
+
+.cancel-button{
+  border-radius: 8px;
+  background-color: rgb(0, 47, 255);
+}
+
+.cancel-button:hover{
+  background-color: rgb(0, 102, 255);
+}

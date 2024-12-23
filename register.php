@@ -49,7 +49,11 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <a href='index.php'><-Back</a>
+    <div class="back-img">
+        <a href="index.php">
+            <img src="img/back.png" alt="Back" id="back-icon">
+        </a>
+    </div>
             <div class="form-container">
                 <form action="" method="post" id="register">
                     <h1>Register</h1>
