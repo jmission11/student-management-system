@@ -7,7 +7,7 @@ if (isset($_GET['ID'])) {
     echo "No ID parameter provided.";
     exit;
 }
-
+session_start();
 include_once("connections/connections.php");
 $con = connection();
 $id = $_GET['ID'];
@@ -16,10 +16,9 @@ $sql = "SELECT * FROM student_list WHERE id = '$id'";
 $students = $con->query($sql) or die($con->error);
 $row = $students->fetch_assoc();
 
-
 if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
-    if (isset($_POST['submit'])) {
 
+    if (isset($_POST['submit'])) {
         $fname = $_POST['firstname'];
         $lname = $_POST['lastname'];
         $gender = $_POST['gender'];

@@ -8,15 +8,20 @@ if (!isset($_SESSION)) {
 include_once("connections/connections.php");
 $con = connection();
 
-if (isset($_GET['ID'])) {
-  $id = $_GET['ID'];
+if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
 
-  $sql = "SELECT * FROM student_list WHERE id = '$id'";
-  $students = $con->query($sql) or die($con->error);
-  $row = $students->fetch_assoc();
+  if (isset($_GET['ID'])) {
+    $id = $_GET['ID'];
+
+    $sql = "SELECT * FROM student_list WHERE id = '$id'";
+    $students = $con->query($sql) or die($con->error);
+    $row = $students->fetch_assoc();
+  } else {
+    echo "No ID parameter provided.";
+    exit;
+  }
 } else {
-  echo "No ID parameter provided.";
-  exit;
+  header("Location: stop.php");
 }
 ?>
 
@@ -33,29 +38,31 @@ if (isset($_GET['ID'])) {
 <body>
   <div class="wrapper">
     <br>
-      <h2>Are you sure you want to</h2> <h1>DELETE</h1><h2> this record?</h2>
-      <div class="confirmation-container">
+    <h2>Are you sure you want to</h2>
+    <h1>DELETE</h1>
+    <h2> this record?</h2>
+    <div class="confirmation-container">
       <?php if (!empty($row['images'])) { ?>
         <div class="Confirmation-image">
           <img src="data_images/<?php echo $row['images']; ?>" alt="Student Image">
         </div>
       <?php } else { ?>
-          <?php
-          switch ($row['gender']) {
-            case "Male":
-              echo '<div class="Confirmation-image"><img src="img/male.png" alt="Student Image"></div>';
-              break;
-            case "Female":
-              echo '<div class="Confirmation-image"><img src="img/female.png" alt="Student Image"></div>';
-              break;
-            default:
-              echo 'NO IMAGE FOUND!';
-              break;
-          }
-          ?>
-          <br>
-          <br>
-        
+        <?php
+        switch ($row['gender']) {
+          case "Male":
+            echo '<div class="Confirmation-image"><img src="img/male.png" alt="Student Image"></div>';
+            break;
+          case "Female":
+            echo '<div class="Confirmation-image"><img src="img/female.png" alt="Student Image"></div>';
+            break;
+          default:
+            echo 'NO IMAGE FOUND!';
+            break;
+        }
+        ?>
+        <br>
+        <br>
+
       <?php } ?>
       <h3>Name: <?php echo $row['firstname'] . " " . $row['lastname']; ?></h3>
       <p>ID: <?php echo $row['id']; ?></p>
