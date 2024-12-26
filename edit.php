@@ -19,6 +19,9 @@ $row = $students->fetch_assoc();
 if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
 
     if (isset($_POST['submit'])) {
+
+        $dateUpdate = date('Y-m-d');
+        $username = $_SESSION['UserLogin'];
         $fname = $_POST['firstname'];
         $lname = $_POST['lastname'];
         $gender = $_POST['gender'];
@@ -31,9 +34,9 @@ if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
 
         if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob)) {
             if (!empty($image)) {
-                $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel', `images`='$image' WHERE `id`='$id'";
+                $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel', `images`='$image', `updateBy`='$username', `dateUpdate`='$dateUpdate' WHERE `id`='$id'";
             } else {
-                $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel' WHERE `id`='$id'";
+                $sql = "UPDATE `student_list` SET `firstname`='$fname', `lastname`='$lname', `gender`='$gender', `dob`='$dob', `address`='$address', `program`='$program', `yearlevel`='$yearlevel', `updateBy`='$username', `dateUpdate`='$dateUpdate' WHERE `id`='$id'";
             }
             $con->query($sql) or die($con->error);
 

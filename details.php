@@ -79,6 +79,8 @@ if (isset($_GET['ID'])) {
       $formattedDate = $date->format('F j, Y');
       $date2 = new DateTime($row['registered']);
       $dateReg = $date2->format('F j, Y');
+      $date3 = new DateTime($row['dateUpdate']);
+      $dateUpdate = $date3->format('F j, Y');
       ?>
 
       <ul>
@@ -99,6 +101,23 @@ if (isset($_GET['ID'])) {
         </li>
         <li>
           <p>Date Registered: <?php echo $dateReg; ?></p>
+        </li>
+        <li>
+          <p>Added By: <?php echo $row['addBy']; ?></p>
+        </li>
+        <li>
+          <p>Date Updated: <?php if (!empty($row['dateUpdate'])) {
+            echo $dateUpdate;
+          } else {
+            echo "N/A";
+          } ?>
+        </li>
+        <li>
+          <p>Updated By: <?php if (!empty($row['updateBy'])){
+            echo $row['updateBy'];
+          } else{
+            echo "N/A";
+          } ?></p>
         </li>
       </ul>
 

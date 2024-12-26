@@ -8,6 +8,7 @@ session_start();
 if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
 if (isset($_POST['submit'])) {
 
+  $username = $_SESSION['UserLogin'];
   $fname = $_POST['firstname'];
   $lname = $_POST['lastname'];
   $gender = $_POST['gender'];
@@ -18,16 +19,21 @@ if (isset($_POST['submit'])) {
   $image = $_FILES['image']['name'];
   $target = "data_images/" . basename($image);
 
-    if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob) && !empty($image)) {
-      $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `images`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$image')";
+    if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob)) {
+      if (!empty($image)){
+        $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `addBy`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$username')";
+      }else{
+        $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `images`, `addBy`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$image', '$username')";
+      }
+    
       $con->query($sql) or die($con->error);
 
-      if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-        header("Location: index.php");
-        exit;
-      } else {
-        echo "Failed to upload image.";
-      }
+      // if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+      //   header("Location: index.php");
+      //   exit;
+      // } else {
+      //   echo "Failed to upload image.";
+      // }
     } else {
       echo "Please fill in all fields.";
     }
@@ -135,7 +141,7 @@ if (isset($_POST['submit'])) {
       <div class="form-row">
         <div class="form-element">
           <label>Image</label>
-          <input type="file" name="image" id="image" required>
+          <input type="file" name="image" id="image">
         </div>
       </div>
 
