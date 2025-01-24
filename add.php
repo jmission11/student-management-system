@@ -28,12 +28,12 @@ if (isset($_POST['submit'])) {
     
       $con->query($sql) or die($con->error);
 
-      // if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-      //   header("Location: index.php");
-      //   exit;
-      // } else {
-      //   echo "Failed to upload image.";
-      // }
+      if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        header("Location: index.php");
+        exit;
+      } else {
+        echo "Failed to upload image.";
+      }
     } else {
       echo "Please fill in all fields.";
     }

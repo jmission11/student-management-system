@@ -54,6 +54,7 @@ $row = $students->fetch_assoc();
 
             <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
                 <a href="add.php" class="add-link">New Student</a>
+                <a href="auth.php" class="add-link">Token</a>
             <?php } ?>
         </div>
         <table>

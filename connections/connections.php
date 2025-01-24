@@ -2,7 +2,7 @@
     function connection(){
         $host = "localhost";
         $username = "root";
-        $password = "asd123";
+        $password = "";
         $database = "student_system";
 
         $con = new mysqli($host, $username, $password, $database);

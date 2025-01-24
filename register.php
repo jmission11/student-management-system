@@ -21,7 +21,11 @@ if (isset($_POST['submit'])) {
                 if (isset($_SESSION['current_token']) && $_SESSION['current_token'] == $token) {
                     $sql = "INSERT INTO `users`(`username`, `password`, `access`) VALUES ('$user', '$pass', '$access')";
                     $con->query($sql) or die($con->error);
-                    header("Location: Login.php");
+                    if (isset($_SESSION['UserLogin'])) {
+                        header("Location: index.php");
+                    } else {
+                        header("Location: Login.php");
+                    }
                     exit;
                 } else {
                     echo "Access Token Authentication Invalid!";
