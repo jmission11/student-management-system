@@ -5,7 +5,7 @@ $con = connection();
 session_start();
 
 
-if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
+if (isset($_SESSION['Access'])) {
 if (isset($_POST['submit'])) {
 
   $username = $_SESSION['UserLogin'];
@@ -18,19 +18,27 @@ if (isset($_POST['submit'])) {
   $yearlevel = $_POST['yearlevel'];
   $image = $_FILES['image']['name'];
   $target = "data_images/" . basename($image);
+  $created = "YES";
+
+  $update_user_sql = "UPDATE `users` SET `created` = '$created' WHERE `username` = '$username'";
+  $con->query($update_user_sql) or die($con->error);
 
     if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob)) {
-      if (!empty($image)){
+
+      if (empty($image)){
         $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `addBy`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$username')";
       }else{
         $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `images`, `addBy`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$image', '$username')";
       }
     
       $con->query($sql) or die($con->error);
+      exit;
 
       if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        
+
         header("Location: index.php");
-        exit;
+        
       } else {
         echo "Failed to upload image.";
       }

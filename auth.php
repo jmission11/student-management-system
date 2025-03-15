@@ -77,7 +77,7 @@ if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN"){
 
 <body>
     <div class="back-img">
-        <a href="register.php">
+        <a href="index.php">
             <img src="img/back.png" alt="Back" id="back-icon">
         </a>
     </div>

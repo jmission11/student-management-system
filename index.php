@@ -35,7 +35,7 @@ $row = $students->fetch_assoc();
     <div class="wrapper">
         <div class="index-title">
             <a href="index.php">Student Management</a>
-        </div>
+\        </div>
         <br>
         <br>
         <div class="index-seach-container">
@@ -53,7 +53,6 @@ $row = $students->fetch_assoc();
             <?php } ?>
 
             <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
-                <a href="add.php" class="add-link">New Student</a>
                 <a href="auth.php" class="add-link">Token</a>
             <?php } ?>
         </div>

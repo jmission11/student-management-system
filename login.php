@@ -17,7 +17,8 @@ if (isset($_POST['login'])) {
   if ($total > 0) {
     $_SESSION['UserLogin'] = $row['username'];
     $_SESSION['Access'] = $row['access'];
-    echo header("Location: index.php");
+    $_SESSION['Created'] = $row['created'];
+    header("Location: accountChecker.php");
 
   } else {
     echo "<div class='message warning'>Invalid Username or Password!</div>";

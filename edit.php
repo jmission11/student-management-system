@@ -43,7 +43,7 @@ if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
             if (!empty($image) && !move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
                 echo "Failed to upload image.";
             } else {
-                header("Location: index.php");
+                header("Location: details.php?ID=$id");
                 exit;
             }
         } else {

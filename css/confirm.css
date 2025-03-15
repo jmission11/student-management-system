@@ -87,6 +87,9 @@ body {
 
 .confirmation-container{
   margin: 2rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .Confirmation-image {
@@ -103,7 +106,7 @@ h1{
   text-decoration: underline;
   font-size: 50px;
   font-weight: bold;
-  color: rgb(189, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
 h2{
