@@ -34,8 +34,7 @@ $row = $students->fetch_assoc();
 <body id="index-body">
     <div class="wrapper">
         <div class="index-title">
-            <a href="index.php">Student Management</a>
-\        </div>
+            <a href="index.php">Student Management</a>        </div>
         <br>
         <br>
         <div class="index-seach-container">
@@ -48,6 +47,7 @@ $row = $students->fetch_assoc();
         <div class="clickables">
             <?php if (isset($_SESSION['UserLogin'])) { ?>
                 <a href="logout.php" id="logout" class="login-out-link">Logout</a>
+                
             <?php } else { ?>
                 <a href="login.php" id="login" class="login-out-link">Login</a>
             <?php } ?>
@@ -55,6 +55,11 @@ $row = $students->fetch_assoc();
             <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
                 <a href="auth.php" class="add-link">Token</a>
             <?php } ?>
+            <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "USER") { ?>
+                <a href="myAccount.php?ID=<?php echo $row['id']; ?>" id="myAccount" class="login-out-link">My Account</a>
+            <?php } ?>
+
+            
         </div>
         <table>
             <thead>

@@ -26,18 +26,18 @@ if (isset($_POST['submit'])) {
     if (!empty($fname) && !empty($lname) && !empty($gender) && !empty($dob)) {
 
       if (empty($image)){
-        $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `addBy`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$username')";
+        $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `username`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$username')";
       }else{
-        $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `images`, `addBy`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$image', '$username')";
+        $sql = "INSERT INTO `student_list`(`firstname`, `lastname`, `gender`, `dob`, `address`, `program`, `yearlevel`, `images`, `username`) VALUES ('$fname', '$lname', '$gender', '$dob', '$address', '$program', '$yearlevel', '$image', '$username')";
       }
     
       $con->query($sql) or die($con->error);
-      exit;
+      
 
       if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
         
-
         header("Location: index.php");
+        exit;
         
       } else {
         echo "Failed to upload image.";

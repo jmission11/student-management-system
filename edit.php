@@ -16,7 +16,7 @@ $sql = "SELECT * FROM student_list WHERE id = '$id'";
 $students = $con->query($sql) or die($con->error);
 $row = $students->fetch_assoc();
 
-if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
+if (isset($_SESSION['Access'])&& $_SESSION['UserLogin'] == $row['username'] || $_SESSION['Access'] == "ADMIN") {
 
     if (isset($_POST['submit'])) {
 

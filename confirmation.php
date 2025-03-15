@@ -31,7 +31,7 @@ if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Delete Confirmation</title>
+  <title>Confirmation</title>
   <link rel="stylesheet" href="css/confirm.css">
 </head>
 

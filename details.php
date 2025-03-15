@@ -43,6 +43,10 @@ if (isset($_GET['ID'])) {
         <a href="edit.php?ID=<?php echo $row['id']; ?>" class="button-link edit-button">Edit</a>
         <a href="confirmation.php?ID=<?php echo $row['id']; ?>" class="button-link delete-button">Delete</a>
       </div>
+    <?php } else if (isset($_SESSION['Access']) && $_SESSION['Access'] == "USER" && $_SESSION['UserLogin'] == $row['username']) { ?>
+      <div class="details-button">
+        <a href="edit.php?ID=<?php echo $row['id']; ?>" class="button-link edit-button">Edit</a>
+      </div>
     <?php } ?>
   </div>
 
@@ -101,9 +105,6 @@ if (isset($_GET['ID'])) {
         </li>
         <li>
           <p>Date Registered: <?php echo $dateReg; ?></p>
-        </li>
-        <li>
-          <p>Added By: <?php echo $row['addBy']; ?></p>
         </li>
         <li>
           <p>Date Updated: <?php if (!empty($row['dateUpdate'])) {
