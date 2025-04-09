@@ -21,12 +21,7 @@ if (isset($_POST['submit'])) {
                 if (isset($_SESSION['current_token']) && $_SESSION['current_token'] == $token) {
                     $sql = "INSERT INTO `users`(`username`, `password`, `access`) VALUES ('$user', '$pass', '$access')";
                     $con->query($sql) or die($con->error);
-                    if (isset($_SESSION['UserLogin'])) {
-                        header("Location: index.php");
-                    } else {
-                        header("Location: Login.php");
-                    }
-                    exit;
+
                 } else {
                     echo "Access Token Authentication Invalid!";
                 }
@@ -38,8 +33,27 @@ if (isset($_POST['submit'])) {
     } else {
         echo "Please fill in all fields.";
     }
+}
+
+if (isset($_POST['submit'])){
+    $username = $_POST['user'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $user = $con->query($sql) or die($con->error);
+    $row = $user->fetch_assoc();
+    $total = $user->num_rows;
+
+    if ($total > 0) {
+        $_SESSION['UserLogin'] = $row['username'];
+        $_SESSION['Access'] = $row['access'];
+        $_SESSION['Created'] = $row['created'];
+        header("Location: accountChecker.php");
+
+    }
 
 }
+
 ?>
 
 <!DOCTYPE html>

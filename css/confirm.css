@@ -87,6 +87,7 @@ body {
 
 .confirmation-container{
   margin: 2rem;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -94,7 +95,6 @@ body {
 
 .Confirmation-image {
   width: 100%;
-  justify-content: center;
 }
 
 .Confirmation-image img {

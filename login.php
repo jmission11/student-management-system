@@ -39,9 +39,7 @@ if (isset($_POST['login'])) {
 
 <body id="login-body">
   <div class="back-img">
-    <a href="index.php">
-      <img src="img/back.png" alt="Back" id="back-icon">
-    </a>
+    <br>
   </div>
   <div class="login-container">
     <h1>Login Page</h1>

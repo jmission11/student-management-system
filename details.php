@@ -33,11 +33,17 @@ if (isset($_GET['ID'])) {
 
 <body>
   <div class="header">
+    <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
     <div class="details-back-img">
       <a href="index.php">
         <img src="img/back.png" alt="Back" id="back-icon">
       </a>
     </div>
+    <?php } else {
+    ?>
+    <br>
+    <br>
+    <?php } ?>
     <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
       <div class="details-button">
         <a href="edit.php?ID=<?php echo $row['id']; ?>" class="button-link edit-button">Edit</a>
@@ -46,6 +52,7 @@ if (isset($_GET['ID'])) {
     <?php } else if (isset($_SESSION['Access']) && $_SESSION['Access'] == "USER" && $_SESSION['UserLogin'] == $row['username']) { ?>
       <div class="details-button">
         <a href="edit.php?ID=<?php echo $row['id']; ?>" class="button-link edit-button">Edit</a>
+        <a href="logout.php" class="button-link delete-button">Logout</a>
       </div>
     <?php } ?>
   </div>
@@ -76,7 +83,7 @@ if (isset($_GET['ID'])) {
 
     <div class="details-info">
       <h2><?php echo $row['firstname'] . " " . $row['lastname'] ?></h2>
-      <h4><?php echo $row['id']; ?></h4>
+      <h4><?php echo $row['ismisID']; ?></h4>
 
       <?php
       $date = new DateTime($row['dob']);

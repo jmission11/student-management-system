@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
   </div>
   <div class="form-container">
     <form action="" method="post" id="add" enctype="multipart/form-data">
-      <h1>Add Names</h1>
+      <h1>Enrollment Form</h1>
       <br>
       <br>
 

@@ -12,6 +12,22 @@ if (isset($_SESSION['UserLogin'])) {
 
 include_once("connections/connections.php");
 
+
+if (isset($_POST['submit'])) {
+    if (!empty($sort) && !empty($sorttype)) {
+        $sort = $_POST['sort'];
+        $sorttype = $_POST['sorttype'];
+    } else {
+        echo "Invalid Sorting";
+        $sort = "id";
+        $sorttype = "DESC";
+    }
+} else {
+    $sort = "id";
+    $sorttype = "DESC";
+}
+
+
 $con = connection();
 
 // Get and sanitize the search input
@@ -19,6 +35,7 @@ $search = isset($_GET['search']) ? trim($_GET['search']) : "";
 
 // Split the search term into multiple parts (e.g., "John Doe" -> ["John", "Doe"])
 $searchParts = explode(" ", $search);
+
 
 // Handle cases where only one or both parts are given
 if (count($searchParts) == 2) {
@@ -30,7 +47,7 @@ if (count($searchParts) == 2) {
         WHERE 
             (firstname LIKE ? AND lastname LIKE ?) 
             OR (firstname LIKE ? AND lastname LIKE ?)
-        ORDER BY id DESC
+        ORDER BY $sort $sorttype
     ";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("ssss", $firstPart, $secondPart, $secondPart, $firstPart);
@@ -42,7 +59,7 @@ if (count($searchParts) == 2) {
         WHERE 
             firstname LIKE ? 
             OR lastname LIKE ?
-        ORDER BY id DESC
+        ORDER BY $sort $sorttype
     ";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("ss", $searchTerm, $searchTerm);
@@ -70,6 +87,35 @@ $row_count = $students->num_rows;
         <div class="index-title">
             <a href="index.php">Student Management</a>
         </div>
+        <?php
+        function selected($name, $value)
+        {
+            return (isset($_POST[$name]) && $_POST[$name] == $value) ? 'selected' : '';
+        }
+        ?>
+        <form action="" method="post" id="sortform">
+            <label>Sort by:</label>
+            <select name="sort" id="sort">
+                <option value="" disabled selected>--</option>
+                <option value="id" <?= selected('sort', 'id') ?>>id</option>
+                <option value="firstname" <?= selected('sort', 'firstname') ?>>firstname</option>
+                <option value="lastname" <?= selected('sort', 'lastname') ?>>lastname</option>
+            </select>
+            <select name="sorttype" id="sorttype">
+                <option value="" disabled selected>--</option>
+                <option value="desc" <?= selected('sorttype', 'desc') ?>>desc</option>
+                <option value="asc" <?= selected('sorttype', 'asc') ?>>asc</option>
+            </select>
+            <button type="submit" name="submit">Sort</button>
+        </form>
+        <form method="post" action="to_excel.php">
+            <input type="text"  name="fileName" id ="fileName" placeholder="File Name" required>
+            <input type="hidden" name="sort" value="<?= $sort ?>">
+            <input type="hidden" name="sorttype" value="<?= $sorttype ?>">
+            <input type="hidden" name="search" value="<?= $search ?>">
+            <button type="submit" name="export">Export to Excel</button>
+        </form>
+
         <br>
         <br>
         <div class="index-seach-container">
@@ -82,12 +128,13 @@ $row_count = $students->num_rows;
         <div class="clickables">
             <?php if (isset($_SESSION['UserLogin'])) { ?>
                 <a href="logout.php" id="logout" class="login-out-link">Logout</a>
+
             <?php } else { ?>
                 <a href="login.php" id="login" class="login-out-link">Login</a>
             <?php } ?>
 
             <?php if (isset($_SESSION['Access']) && $_SESSION['Access'] == "ADMIN") { ?>
-                <a href="add.php" class="add-link">New Student</a>
+                <a href="auth.php" class="add-link">Token</a>
             <?php } ?>
         </div>
         <table>
@@ -104,7 +151,7 @@ $row_count = $students->num_rows;
                     while ($row = $students->fetch_assoc()) { ?>
                         <tr>
                             <td width="30"><a class="view" href="details.php?ID=<?php echo $row['id']; ?>">view</a></td>
-                            <td><?php echo $row['id']; ?></td>
+                            <td><?php echo $row['ismisID']; ?></td>
                             <td><?php echo $row['firstname']; ?></td>
                             <td><?php echo $row['lastname']; ?></td>
                         </tr>

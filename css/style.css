@@ -149,9 +149,9 @@ body {
   background-color: rgb(255, 255, 255);
   border: 1px solid grey;
   border-radius: 4px;
-  padding: 2rem;
+  padding: 4rem;
   box-shadow: 5px 5px 10px #8888;
-  margin: 0 auto;
+  margin:auto;
   width: 25%;
 }
 
