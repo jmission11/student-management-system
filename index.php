@@ -1,10 +1,10 @@
-?<?php
+<?php
 
 include_once("connections/connections.php");
 $con = connection();
 session_start();
 
-$username = $_SESSION['UserLogin'];
+  $username = $_SESSION['UserLogin'];
 
 $sql = "SELECT * FROM student_list WHERE username = '$username'";
 $students = $con->query($sql) or die($con->error);
